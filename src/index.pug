@@ -1,3 +1,4 @@
+doctype html
 html(lang="en")
     head
         meta(charset="UTF-8")
@@ -7,4 +8,10 @@ html(lang="en")
         link(rel="stylesheet", href="style.css")
 
     body
-    h1 Hello World
+      //- pre=JSON.stringify(data, null, 2)
+
+      .mega-menu
+        ul.wedding-navigation
+          each menu, key in data.menu
+            li.parentLink
+              a.mainLink(href=`/${menu.link1}`)= menu.parentLink   
