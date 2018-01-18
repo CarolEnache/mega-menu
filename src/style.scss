@@ -1,12 +1,79 @@
-.wedding-navigation{
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+.mega-menu{
     display: flex;
     justify-content: space-around;
     list-style: none;
+    background-color: aqua;
+}
+.parentLink{
+    padding: 10px;
+}
 
-    .mainLink{
-        color: black;
-        text-decoration: none;
-        }
+.parentLink:nth-child(n+8){
+    display: none;
+}
+.mainLink{
+    text-decoration: none;
+    color: black;
+}
 
+.mainLink:hover{
+    background-color: darkblue;
+    color: white;
+}
+.mega-menu_drop-down{
+    // height: 500px;
+    top: 38px;
+    left: 0;
+    width: 100vw;
+    background-color: #f1f1f1;
+    position: absolute;
+    display: none;
     
 }
+
+.parentLink:hover 
+.mega-menu_drop-down {
+    display: block;
+}
+.menu-all-link{
+    color: black;
+    font-size: 1.5rem;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.test1{
+    display: flex;
+    // justify-content: space-around;
+}
+.menu-all-link{
+    position: absolute;
+    margin-top: 0.5rem;
+    padding: 1.5rem;
+
+
+}
+
+.subMenu-lists{
+    margin-top: 3rem;
+    padding: 2rem;
+    list-style: none;
+    line-height: 25px;
+}
+
+.subMenu-link{
+    text-decoration: none;
+
+}
+
+// .test{
+//     padding-top: 150px;
+//     padding-left: 50px;
+
+// }
