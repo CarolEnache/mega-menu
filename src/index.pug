@@ -19,6 +19,11 @@ html(lang="en")
                     ul.subMenu-lists
                       each subMenuList, key3 in subMenu
                         li.subMenu-item
-                            a.subMenu-link(href=`/#`)= subMenuList.text
+                          a.subMenu-link(href=`/#`)= subMenuList.text
 
+      script.
+        let ceva = () => {
+          document.getElementsByClassName('.parentLink').innerHTML = 'ceva';
+        }
 
+        ceva();

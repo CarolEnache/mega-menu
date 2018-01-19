@@ -14,8 +14,16 @@
     padding: 10px;
 }
 
+.parentLink:nth-child(n+8) {
+     display: block;
+}
+
+
 .parentLink:nth-child(n+8){
     display: none;
+}
+.parentLink:nth-child(7){
+    font-size: 5rem;
 }
 .mainLink{
     text-decoration: none;
@@ -27,7 +35,6 @@
     color: white;
 }
 .mega-menu_drop-down{
-    // height: 500px;
     top: 38px;
     left: 0;
     width: 100vw;
@@ -50,7 +57,6 @@
 
 .test1{
     display: flex;
-    // justify-content: space-around;
 }
 .menu-all-link{
     position: absolute;
