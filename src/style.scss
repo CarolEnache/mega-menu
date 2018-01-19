@@ -14,17 +14,17 @@
     padding: 10px;
 }
 
-.parentLink:nth-child(n+8) {
-     display: block;
-}
+.mega-menu >  .parentLink:hover:nth-child(7) ~ .parentLink:nth-child(n+8){
 
+    display: block;
+}
 
 .parentLink:nth-child(n+8){
     display: none;
 }
-.parentLink:nth-child(7){
-    font-size: 5rem;
-}
+// .parentLink:nth-child(7){
+//     font-size: 5rem;
+// }
 .mainLink{
     text-decoration: none;
     color: black;

@@ -9,21 +9,19 @@ html(lang="en")
 
     body
       .mega-menu
-        each menu, key in data.menu
+        each menu, key1 in data.menu
           .parentLink
             a.mainLink(href=`/${menu.parentHref}`)= menu.parentLink
             .mega-menu_drop-down
               .test1
                 a.menu-all-link(href=`${menu.dropdownHeaderHref}`)= menu.dropdownHeaderText
-                  each subMenu in menu.list
+                  each subMenu, key2 in menu.list
                     ul.subMenu-lists
                       each subMenuList, key3 in subMenu
                         li.subMenu-item
                           a.subMenu-link(href=`/#`)= subMenuList.text
 
       script.
-        let ceva = () => {
-          document.getElementsByClassName('.parentLink').innerHTML = 'ceva';
+        let elements = () => {
+         document.getElementsByClassName('.parentLink').innerHTML = 'ceva';
         }
-
-        ceva();
