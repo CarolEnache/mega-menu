@@ -20,8 +20,32 @@ html(lang="en")
                       each subMenuList, key3 in subMenu
                         li.subMenu-item
                           a.subMenu-link(href=`/#`)= subMenuList.text
+            if menu.dropDown 
+              .mega-menu_drop-down
+                each secondMenu in menu.list
+                  .parentLinkSecondMenu
+                    //- pre= JSON.stringify(secondMenu, null, 2)
+                    if secondMenu.parentHref == 'javascript://'
+                      .mainLink=secondMenu.parentLink
+                        each secondMenuItem in secondMenu.list
+                          .mega-menu_drop-down_secondMenu
+                            .smecherie
+                              each secondMenuSubItem in secondMenuItem
+                                if secondMenuSubItem.link
+                                  .smecherie2
+                                    a.ceva(href='#')=secondMenuSubItem.text
+                    else
+                      a.mainLink(href=`/${secondMenu.parentHref}`)=secondMenu.parentLink
+                        each secondMenuItem in secondMenu.list
+                          .mega-menu_drop-down_secondMenu
+                            .smecherie
+                              each secondMenuSubItem in secondMenuItem
+                                if secondMenuSubItem.link
+                                  .smecherie2
+                                    a.ceva(href='#')=secondMenuSubItem.text
 
       script.
         let elements = () => {
          document.getElementsByClassName('.parentLink').innerHTML = 'ceva';
         }
+        elements()
