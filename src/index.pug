@@ -10,7 +10,8 @@ html(lang="en")
     body
       .mega-menu
         each menu, key1 in data.menu
-          .parentLink
+          .parentLink(data-key=key1)
+            //- asta-i ala care vrem noi
             a.mainLink(href=`/${menu.parentHref}`)= menu.parentLink
             .mega-menu_drop-down
               .test1
@@ -18,8 +19,8 @@ html(lang="en")
                   each subMenu, key2 in menu.list
                     ul.subMenu-lists
                       each subMenuList, key3 in subMenu
-                        li.subMenu-item
-                          a.subMenu-link(href=`/#`)= subMenuList.text
+                        //- li.subMenu-item
+                        //-   a.subMenu-link(href=`/#`)= subMenuList.text
             if menu.dropDown 
               .mega-menu_drop-down
                 each secondMenu in menu.list
@@ -45,7 +46,8 @@ html(lang="en")
                                     a.ceva(href='#')=secondMenuSubItem.text
 
       script.
-        let elements = () => {
-         document.getElementsByClassName('.parentLink').innerHTML = 'ceva';
-        }
-        elements()
+        let cevaList = [...document.querySelectorAll('.parentLink')]
+        cevaList.map( ceva => {
+          console.log(ceva)
+        })
+        
