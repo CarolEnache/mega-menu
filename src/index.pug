@@ -11,11 +11,10 @@ html(lang="en")
       .mega-menu
         each menu, key1 in data.menu
           .parentLink(data-key=key1)
-            //- asta-i ala care vrem noi
             a.mainLink(href=`/${menu.parentHref}`)= menu.parentLink
             .mega-menu_drop-down
               a.menu-all-link(href=`${menu.dropdownHeaderHref}`)= menu.dropdownHeaderText
-              .test1
+              .subMenuWrapper
                 //- each subMenu, key2 in menu.list
                 //-   ul.subMenu-lists
                 //-     each subMenuList, key3 in subMenu
@@ -34,7 +33,7 @@ html(lang="en")
                               each secondMenuSubItem in secondMenuItem
                                 if secondMenuSubItem.link
                                   .smecherie2
-                                    a.ceva(href='#') #{secondMenuSubItem.text}
+                                    a.ceva(href='#')=secondMenuSubItem.text
                     else
                       a.mainLink(href=`/${secondMenu.parentHref}`)=secondMenu.parentLink
                         each secondMenuItem in secondMenu.list
@@ -47,37 +46,46 @@ html(lang="en")
 
       script.
         const menu = !{JSON.stringify(data.menu)};
-        let cevaList = [...document.querySelectorAll('.parentLink')]
-        cevaList.map( ceva => {
-          ceva.addEventListener('mouseover', e => {
-            //- console.log(e.currentTarget.dataset.key)
-            //- console.log(`construieste pentru ${ceva.dataset.key}`)
-            const list = menu[e.currentTarget.dataset.key].list;
-            let test1 = ceva.querySelector('.test1');
-            test1.innerHTML = '';
-            list.map(listm => {
-              console.log(listm);
-
-              //- facem ul-ul
-              let ul = document.createElement('ul');
-              ul.className = "subMenu-lists";
-              listm.map(listmm => {
-                //- facem li-urile
-                let li = document.createElement('li');
-                li.className = 'subMenu-item';
-                let atag = document.createElement('a');
-                atag.className = 'subMenu-link';
-                atag.href = '/#'
-                atag.innerText = listmm.text;
-
-                li.appendChild(atag);
-
-                ul.appendChild(li);
-              });
-
-              test1.appendChild(ul);
+        //- select the first row of links
+        let parentLinkList = [...document.querySelectorAll('.parentLink')];
+        //- iterate the list and add the event listener
+        parentLinkList.map(parentLink => {
+          parentLink.addEventListener('mouseover', e =>{
+            //- set each link in the nav bar to corespond with it's own key
+            let list = menu[e.currentTarget.dataset.key].list
+            //- select the wrapper div for the sub menu
+            let subMenuWrapper = parentLink.querySelector('.subMenuWrapper')
+            //- set the wrapping div to be empty after each event
+            subMenuWrapper.innerHTML = ''
+            //- iterate the list of each link
+            list.map(listItems =>{
+              //- create a unorderd list for each list in the parentLink
+              let ul = document.createElement('ul')
+              ul.className = 'subMenu-lists'
+              //- iterate each list
+              listItems.map(listItemLinks =>{
+                //- create the list items and give them classes
+                let listItem = document.createElement('li')
+                listItem.className = 'subMenu-item'
+                //- create each anchor tag and give them clases
+                let listItemLink = document.createElement('a')
+                listItemLink.className = 'subMenu-link'
+                listItemLink.innerHTML = listItemLinks.text
+                //- append the <li> to <ul>
+                ul.appendChild(listItem)
+                //- append <a> to <li>
+                listItem.appendChild(listItemLink)
+              })
+              //- append the <ul> to the wrapping <div>
+                subMenuWrapper.appendChild(ul)
             })
-            console.log(test1)
           })
         })
         
+        let moreList = [...document.querySelectorAll('.parentLinkSecondMenu')];
+        moreList.map(moreLink=>{
+          moreLink.addEventListener('mouseover', e => {
+            let list2 = menu[e.currentTarget.dataset.key].list
+            console.log(list2)
+          })
+        })
